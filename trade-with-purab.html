@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Get ready-to-execute trade signals from Trade With Purab on Telegram — entry, target & stop-loss included. Join 12,000+ traders free." />
+<meta property="og:title" content="Trade With Purab — Free Telegram Trading Signals" />
+<meta property="og:description" content="Ready-to-execute trade signals on Telegram. Entry, target, stop-loss. Tap and trade in under 30 seconds." />
+<title>Trade With Purab — Free Telegram Trading Signals</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080C16;
+    --bg-card: #0F1623;
+    --bg-card2: #141C2E;
+    --accent: #00E87A;
+    --accent-dim: rgba(0,232,122,0.12);
+    --accent-glow: rgba(0,232,122,0.25);
+    --red: #FF4B55;
+    --red-dim: rgba(255,75,85,0.12);
+    --gold: #F5C842;
+    --text-primary: #EEF2FF;
+    --text-secondary: #8A9BB8;
+    --text-muted: #4A5568;
+    --border: rgba(255,255,255,0.07);
+    --border-accent: rgba(0,232,122,0.3);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ========== TICKER ========== */
+  .ticker-wrap {
+    background: #040710;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    padding: 8px 0;
+    position: relative;
+    z-index: 100;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: ticker 28s linear infinite;
+  }
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 32px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    border-right: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .ticker-item span.name { color: var(--text-primary); font-weight: 600; }
+  .ticker-item span.up { color: var(--accent); }
+  .ticker-item span.dn { color: var(--red); }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ========== NAV ========== */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 5%;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(8,12,22,0.92);
+    backdrop-filter: blur(16px);
+    z-index: 99;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: 0;
+    flex-shrink: 0;
+  }
+  .nav-logo-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+  .nav-logo-text small {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .nav-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+  .nav-cta {
+    background: var(--accent);
+    color: #040710;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 9px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity .2s, transform .15s;
+  }
+  .nav-cta:hover { opacity: .9; transform: translateY(-1px); }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 5% 60px;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,232,122,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,232,122,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .hero-radial {
+    position: absolute;
+    top: -120px;
+    right: -100px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(ellipse, rgba(0,232,122,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 64px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 28px;
+  }
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 7vw, 90px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+  }
+  .hero-headline em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 500px;
+    margin-bottom: 36px;
+  }
+  .hero-sub strong { color: var(--text-primary); font-weight: 600; }
+
+  .hero-stats-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    padding: 0 20px;
+    border-right: 1px solid var(--border);
+  }
+  .hero-stat:first-child { padding-left: 0; }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 26px;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #040710;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 15px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity .2s, transform .15s, box-shadow .2s;
+    position: relative;
+  }
+  .btn-primary:hover {
+    opacity: .92;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,232,122,0.25);
+  }
+  .btn-arrow { font-size: 18px; transition: transform .2s; }
+  .btn-primary:hover .btn-arrow { transform: translateX(3px); }
+  .hero-social-proof {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+  .hero-social-proof span { color: var(--accent); }
+
+  /* ========== SIGNAL CARD PANEL ========== */
+  .signal-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .signal-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: #0a1020;
+  }
+  .signal-panel-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+  }
+  .live-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .signal-card {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border);
+    transition: background .2s;
+  }
+  .signal-card:hover { background: rgba(255,255,255,0.02); }
+  .signal-card:last-child { border-bottom: none; }
+  .signal-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .signal-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .signal-badge.buy { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--border-accent); }
+  .signal-badge.sell { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,75,85,0.3); }
+  .signal-pnl {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .signal-pnl.neg { color: var(--red); }
+  .signal-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .signal-levels {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 6px;
+  }
+  .signal-level {
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+    padding: 6px 8px;
+    text-align: center;
+  }
+  .sl-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 2px; }
+  .sl-val { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
+  .sl-val.entry-val { color: var(--text-primary); font-weight: 600; }
+  .sl-val.target-val { color: var(--accent); }
+  .sl-val.stop-val { color: var(--red); }
+
+  /* placeholder image area */
+  .img-placeholder {
+    background: var(--bg-card2);
+    border: 1.5px dashed rgba(255,255,255,0.12);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    gap: 8px;
+    font-size: 13px;
+    text-align: center;
+    padding: 24px;
+  }
+  .img-placeholder svg { opacity: .35; }
+
+  /* ========== METRICS BAND ========== */
+  .metrics-band {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 5%;
+  }
+  .metrics-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .metric-cell {
+    background: var(--bg-card);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .metric-num {
+    font-family: var(--font-display);
+    font-size: 52px;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .metric-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+  .metric-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-family: var(--font-mono);
+  }
+
+  /* ========== SECTION COMMONS ========== */
+  section { padding: 96px 5%; }
+  .section-max { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+  }
+  .section-heading em { font-style: normal; color: var(--accent); }
+  .section-sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 56px;
+  }
+
+  /* ========== MENTOR SECTION ========== */
+  .mentor-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .mentor-photo-frame {
+    position: relative;
+  }
+  .mentor-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .mentor-accent-bar {
+    position: absolute;
+    bottom: -16px;
+    left: -16px;
+    right: 24px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .mentor-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(8,12,22,0.9);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    padding: 10px 14px;
+    backdrop-filter: blur(8px);
+  }
+  .mentor-tag-name { font-weight: 700; font-size: 14px; color: var(--text-primary); }
+  .mentor-tag-role { font-size: 11px; color: var(--accent); font-family: var(--font-mono); }
+  .mentor-highlights {
+    margin-top: 24px;
+  }
+  .mentor-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mentor-highlight:last-child { border-bottom: none; }
+  .mh-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .mh-text strong { display: block; font-size: 14px; color: var(--text-primary); margin-bottom: 2px; }
+  .mh-text span { font-size: 13px; color: var(--text-secondary); }
+
+  /* ========== HOW IT WORKS ========== */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 24px;
+  }
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .25s;
+  }
+  .step-card:hover { border-color: var(--border-accent); }
+  .step-card::before {
+    content: attr(data-step);
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    font-family: var(--font-display);
+    font-size: 88px;
+    line-height: 1;
+    color: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .step-body { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ========== SIGNALS RESULTS ========== */
+  .signals-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 16px;
+  }
+  .result-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: border-color .2s, transform .2s;
+  }
+  .result-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+  .result-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+  .result-icon.buy { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--border-accent); }
+  .result-icon.sell { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,75,85,0.3); }
+  .result-body { flex: 1; }
+  .result-name { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .result-levels {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .result-time { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+  .result-pnl {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .result-pnl-val {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .result-pnl-val.neg { color: var(--red); }
+  .result-check { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ========== TESTIMONIALS ========== */
+  .testi-grid {
+    position: relative;
+    height: 320px;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .testi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity .6s ease, transform .6s ease;
+    pointer-events: none;
+  }
+  .testi-card:hover { border-color: var(--border-accent); }
+  .testi-card.active {
+    opacity: 1;
+    transform: translateX(0);
+    border-color: var(--border-accent);
+    box-shadow: 0 8px 32px rgba(0,232,122,0.15);
+    pointer-events: auto;
+  }
+  .testi-card.prev {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  .testi-quote-mark {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    font-family: var(--font-display);
+    font-size: 64px;
+    color: rgba(0,232,122,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .testi-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 4px;
+  }
+  .star { color: var(--gold); font-size: 13px; }
+  .testi-text { font-size: 14px; color: var(--text-secondary); line-height: 1.65; flex: 1; }
+  .testi-footer { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .testi-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .testi-name { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+  .testi-role { font-size: 12px; color: var(--text-muted); }
+  .testi-pnl {
+    margin-left: auto;
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--accent);
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .testi-pnl small { display: block; font-family: var(--font-body); font-size: 10px; color: var(--text-muted); font-weight: 400; }
+
+  /* ========== FINAL CTA ========== */
+  .cta-section {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-glow {
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(0,232,122,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-inner { position: relative; z-index: 2; }
+  .cta-headline {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+  }
+  .cta-headline em { font-style: normal; color: var(--accent); }
+  .cta-sub { font-size: 17px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 36px; line-height: 1.6; }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #040710;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 17px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity .2s, transform .15s, box-shadow .2s;
+    margin-bottom: 20px;
+  }
+  .cta-btn:hover {
+    opacity: .92;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(0,232,122,0.28);
+  }
+  .cta-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .trust-check {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: var(--accent);
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    padding: 40px 5%;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo { font-family: var(--font-display); font-size: 20px; color: var(--text-primary); }
+  .footer-disclaimer {
+    font-size: 11px;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.55;
+    text-align: center;
+    flex: 1;
+  }
+  .footer-copy { font-size: 12px; color: var(--text-muted); font-family: var(--font-mono); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .signal-panel { max-width: 440px; }
+    .mentor-grid { grid-template-columns: 1fr; gap: 48px; }
+    .metrics-inner { grid-template-columns: repeat(2,1fr); }
+    .testi-grid { height: 360px; }
+    .how-grid { grid-template-columns: 1fr; }
+    .signals-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .metrics-inner { grid-template-columns: repeat(2,1fr); }
+    .testi-grid { height: 400px; max-width: 100%; }
+    .hero-stat { padding: 0 14px; }
+    .nav-badge { display: none; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-disclaimer { text-align: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-label="Live market data ticker" role="marquee">
+  <div class="ticker-track" id="ticker">
+    <div class="ticker-item"><span class="name">RELIANCE</span><span class="up">▲ +2.1%</span></div>
+    <div class="ticker-item"><span class="name">INFY</span><span class="up">▲ +1.56%</span></div>
+    <div class="ticker-item"><span class="name">TCS</span><span class="dn">▼ -0.34%</span></div>
+    <div class="ticker-item"><span class="name">HDFC</span><span class="up">▲ +0.92%</span></div>
+    <div class="ticker-item"><span class="name">TATASTEEL</span><span class="up">▲ +3.4%</span></div>
+    <div class="ticker-item"><span class="name">WIPRO</span><span class="up">▲ +1.78%</span></div>
+    <div class="ticker-item"><span class="name">GOLD</span><span class="up">▲ +0.65%</span></div>
+    <div class="ticker-item"><span class="name">SENSEX</span><span class="up">▲ +1.12%</span></div>
+    <div class="ticker-item"><span class="name">NIFTY</span><span class="up">▲ +0.87%</span></div>
+    <div class="ticker-item"><span class="name">BANKNIFTY</span><span class="dn">▼ -0.21%</span></div>
+    <div class="ticker-item"><span class="name">RELIANCE</span><span class="up">▲ +2.1%</span></div>
+    <div class="ticker-item"><span class="name">INFY</span><span class="up">▲ +1.56%</span></div>
+    <div class="ticker-item"><span class="name">TCS</span><span class="dn">▼ -0.34%</span></div>
+    <div class="ticker-item"><span class="name">HDFC</span><span class="up">▲ +0.92%</span></div>
+    <div class="ticker-item"><span class="name">TATASTEEL</span><span class="up">▲ +3.4%</span></div>
+    <div class="ticker-item"><span class="name">WIPRO</span><span class="up">▲ +1.78%</span></div>
+    <div class="ticker-item"><span class="name">GOLD</span><span class="up">▲ +0.65%</span></div>
+    <div class="ticker-item"><span class="name">SENSEX</span><span class="up">▲ +1.12%</span></div>
+    <div class="ticker-item"><span class="name">NIFTY</span><span class="up">▲ +0.87%</span></div>
+    <div class="ticker-item"><span class="name">BANKNIFTY</span><span class="dn">▼ -0.21%</span></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">TWP</div>
+    <div class="nav-logo-text">
+      Trade With Purab
+      <small>Signal Provider</small>
+    </div>
+  </a>
+  <div class="nav-badge">
+    <div class="pulse-dot"></div>
+    Signals Active · Market Hours
+  </div>
+  <a class="nav-cta" href="https://t.me/+XfUtefa7nGcxOTFl" target="_blank" rel="noopener">Join Free →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-radial"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="pulse-dot"></div>
+        Live on Telegram · 12,000+ Active Members
+      </div>
+      <h1 class="hero-headline">
+        MAKE <em>HUGE</em><br/>MONEY WHILE<br/>DOING YOUR JOB
+      </h1>
+      <p class="hero-sub">
+        Get <strong>ready-to-execute trade signals</strong> on Telegram — entry, target &amp; stop-loss all included. Tap and trade in under <strong>30 seconds.</strong>
+      </p>
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <div class="hero-stat-num">92%</div>
+          <div class="hero-stat-label">Accuracy</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">12K+</div>
+          <div class="hero-stat-label">Members</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Free</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4+ Yrs</div>
+          <div class="hero-stat-label">Track Record</div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://t.me/+XfUtefa7nGcxOTFl" target="_blank" rel="noopener">
+          Join Free on Telegram Now <span class="btn-arrow">→</span>
+        </a>
+        <div class="hero-social-proof"><span>⚡ 47 people joined</span> in the last 2 hours</div>
+      </div>
+    </div>
+
+    <!-- Signal Panel (right side) -->
+    <div class="signal-panel">
+      <div class="signal-panel-header">
+        <span class="signal-panel-title">Live Signal Feed</span>
+        <span class="live-badge"><div class="pulse-dot"></div> LIVE</span>
+      </div>
+
+      <!-- Signal 1 -->
+      <div class="signal-card">
+        <div class="signal-top">
+          <span class="signal-badge buy">▲ BUY</span>
+          <span class="signal-pnl">+34.5%</span>
+        </div>
+        <div class="signal-name">NIFTY 24500 CE</div>
+        <div class="signal-levels">
+          <div class="signal-level">
+            <div class="sl-label">Entry</div>
+            <div class="sl-val entry-val">₹145</div>
+          </div>
+          <div class="signal-level">
+            <div class="sl-label">Target</div>
+            <div class="sl-val target-val">₹195</div>
+          </div>
+          <div class="signal-level">
+            <div class="sl-label">SL</div>
+            <div class="sl-val stop-val">₹125</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signal 2 -->
+      <div class="signal-card">
+        <div class="signal-top">
+          <span class="signal-badge buy">▲ BUY</span>
+          <span class="signal-pnl">+3.5%</span>
+        </div>
+        <div class="signal-name">RELIANCE</div>
+        <div class="signal-levels">
+          <div class="signal-level">
+            <div class="sl-label">Entry</div>
+            <div class="sl-val entry-val">₹2,840</div>
+          </div>
+          <div class="signal-level">
+            <div class="sl-label">Target</div>
+            <div class="sl-val target-val">₹2,940</div>
+          </div>
+          <div class="signal-level">
+            <div class="sl-label">SL</div>
+            <div class="sl-val stop-val">₹2,795</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signal 3 -->
+      <div class="signal-card">
+        <div class="signal-top">
+          <span class="signal-badge sell">▼ SELL</span>
+          <span class="signal-pnl">+40.9%</span>
+        </div>
+        <div class="signal-name">BANKNIFTY 52000 PE</div>
+        <div class="signal-levels">
+          <div class="signal-level">
+            <div class="sl-label">Entry</div>
+            <div class="sl-val entry-val">₹220</div>
+          </div>
+          <div class="signal-level">
+            <div class="sl-label">Target</div>
+            <div class="sl-val target-val">₹310</div>
+          </div>
+          <div class="signal-level">
+            <div class="sl-label">SL</div>
+            <div class="sl-val stop-val">₹180</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS BAND -->
+<div class="metrics-band">
+  <div class="metrics-inner">
+    <div class="metric-cell">
+      <div class="metric-num">92%</div>
+      <div class="metric-desc">Verified Signal Accuracy</div>
+      <div class="metric-sub">Tracked across 2,400+ signals · Last 12 months</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">12K+</div>
+      <div class="metric-desc">Active Members</div>
+      <div class="metric-sub">On Telegram · Growing daily</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">2,400+</div>
+      <div class="metric-desc">Signals Delivered</div>
+      <div class="metric-sub">Entry · Target · Stop-Loss</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">4+ Yrs</div>
+      <div class="metric-desc">Proven Track Record</div>
+      <div class="metric-sub">Real capital · Real results</div>
+    </div>
+  </div>
+</div>
+
+<!-- MENTOR SECTION -->
+<section id="mentor">
+  <div class="section-max">
+    <div class="mentor-grid">
+      <!-- Photo placeholder -->
+      <div class="mentor-photo-frame">
+        <div class="mentor-photo-placeholder">
+          <img src="purab-logo.jpg" alt="Purab - Lead Signal Provider" style="width:100%; height:100%; object-fit:cover; border-radius:16px;">
+        </div>
+        <div class="mentor-accent-bar"></div>
+        <div class="mentor-tag">
+          <div class="mentor-tag-name">Purab</div>
+          <div class="mentor-tag-role">Lead Signal Provider</div>
+        </div>
+      </div>
+
+      <!-- Mentor copy -->
+      <div>
+        <span class="section-eyebrow">Meet Your Mentor</span>
+        <h2 class="section-heading">4+ years of<br/>market <em>scars.</em><br/>Now you skip the pain.</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:32px;">
+          Purab is a full-time trader who's spent years figuring out what actually works in Indian markets — and what quietly drains accounts. Every signal you receive comes from his own setups, with his own capital on the line first.
+        </p>
+        <div class="mentor-highlights">
+          <div class="mentor-highlight">
+            <div class="mh-icon">📈</div>
+            <div class="mh-text">
+              <strong>Trades NIFTY, BANKNIFTY &amp; top F&amp;O stocks</strong>
+              <span>India's most liquid instruments — intraday &amp; positional calls</span>
+            </div>
+          </div>
+          <div class="mentor-highlight">
+            <div class="mh-icon">⚖️</div>
+            <div class="mh-text">
+              <strong>Strict 1:2 risk-to-reward on every call</strong>
+              <span>Every signal is sized to give you twice the upside vs the downside</span>
+            </div>
+          </div>
+          <div class="mentor-highlight">
+            <div class="mh-icon">🛑</div>
+            <div class="mh-text">
+              <strong>Stop-loss is non-negotiable</strong>
+              <span>No averaging losers, no holding bag — capital protection comes first</span>
+            </div>
+          </div>
+        </div>
+        <a class="btn-primary" href="https://t.me/+XfUtefa7nGcxOTFl" target="_blank" rel="noopener" style="margin-top:28px;display:inline-flex;">
+          Get His Signals Free <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-max">
+    <span class="section-eyebrow">How it works</span>
+    <h2 class="section-heading">2 Steps to<br/><em>Extra Income</em></h2>
+    <p class="section-sub">Built for salaried professionals &amp; busy people who can't sit glued to charts all day.</p>
+    <div class="how-grid">
+      <div class="step-card" data-step="01">
+        <div class="step-num">Step 01</div>
+        <h3 class="step-title">Join the Channel</h3>
+        <p class="step-body">Tap the button below, open Telegram, and you're in. No payment, no forms, no experience required. Takes under 10 seconds.</p>
+        <a href="https://t.me/+XfUtefa7nGcxOTFl" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;">
+          Join Now →
+        </a>
+      </div>
+      <div class="step-card" data-step="02">
+        <div class="step-num">Step 02</div>
+        <h3 class="step-title">Get Live Signals</h3>
+        <p class="step-body">Entry, target &amp; stop-loss delivered the moment a setup is live. Everything you need in one message — tap, trade, done in under 30 seconds.</p>
+        <div style="margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);font-family:var(--font-mono);">
+          <div class="pulse-dot"></div> Sub-30 second execution
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a class="btn-primary" href="https://t.me/+XfUtefa7nGcxOTFl" target="_blank" rel="noopener">
+        Start Getting Signals Free <span class="btn-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT RESULTS -->
+<section id="results">
+  <div class="section-max">
+    <span class="section-eyebrow">Recent Results</span>
+    <h2 class="section-heading">Our Latest<br/><em>Delivered Signals</em></h2>
+    <p class="section-sub">Every signal came with entry, target and SL — straight to your Telegram.</p>
+    <div class="signals-grid">
+      <div class="result-card">
+        <div class="result-icon buy">BUY</div>
+        <div class="result-body">
+          <div class="result-name">NIFTY 24500 CE</div>
+          <div class="result-levels">Entry ₹145 · Target ₹195 · SL ₹125</div>
+          <div class="result-time">Today 10:15 AM ✓</div>
+        </div>
+        <div class="result-pnl">
+          <div class="result-pnl-val">+34.5%</div>
+          <div class="result-check">Booked</div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon buy">BUY</div>
+        <div class="result-body">
+          <div class="result-name">RELIANCE</div>
+          <div class="result-levels">Entry ₹2,840 · Target ₹2,940 · SL ₹2,795</div>
+          <div class="result-time">Yesterday 2:30 PM ✓</div>
+        </div>
+        <div class="result-pnl">
+          <div class="result-pnl-val">+3.5%</div>
+          <div class="result-check">Booked</div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon sell">SELL</div>
+        <div class="result-body">
+          <div class="result-name">BANKNIFTY 52000 PE</div>
+          <div class="result-levels">Entry ₹220 · Target ₹310 · SL ₹180</div>
+          <div class="result-time">2 days ago ✓</div>
+        </div>
+        <div class="result-pnl">
+          <div class="result-pnl-val">+40.9%</div>
+          <div class="result-check">Booked</div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-icon buy">BUY</div>
+        <div class="result-body">
+          <div class="result-name">TCS</div>
+          <div class="result-levels">Entry ₹3,620 · Target ₹3,800 · SL ₹3,540</div>
+          <div class="result-time">3 days ago ✓</div>
+        </div>
+        <div class="result-pnl">
+          <div class="result-pnl-val">+4.97%</div>
+          <div class="result-check">Booked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="members" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-max">
+    <span class="section-eyebrow">Member Stories</span>
+    <h2 class="section-heading">Real People.<br/><em>Real Profits.</em></h2>
+    <p class="section-sub">Across India — engineers, homemakers, students — all earning extra income with the same signals.</p>
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">I was losing money trying to learn charts. Purab's signals changed everything — clean entries, clear SL. I finally feel in control.</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">RS</div>
+          <div>
+            <div class="testi-name">Rahul S.</div>
+            <div class="testi-role">Software Engineer</div>
+          </div>
+          <div class="testi-pnl">+₹68.4K<small>per month</small></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">No screen watching needed. I check Telegram twice a day, place trades, and go about my life. Honestly life-changing.</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">AP</div>
+          <div>
+            <div class="testi-name">Anita P.</div>
+            <div class="testi-role">Homemaker</div>
+          </div>
+          <div class="testi-pnl">+₹41.2K<small>per month</small></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">Tried 4 signal channels. This is the only one that gives proper risk:reward and actually respects the stop-loss. No exceptions.</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">VM</div>
+          <div>
+            <div class="testi-name">Vikram M.</div>
+            <div class="testi-role">Sales Manager</div>
+          </div>
+          <div class="testi-pnl">+₹92.1K<small>per month</small></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">Clean signals, no hype. Booked steady profits in my very first month. The stop-loss discipline this channel teaches is gold.</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">PK</div>
+          <div>
+            <div class="testi-name">Priya K.</div>
+            <div class="testi-role">Accountant</div>
+          </div>
+          <div class="testi-pnl">+₹52.8K<small>per month</small></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testi-text">Started with ₹10K capital. Three months in, my portfolio is up 60%. The discipline this channel teaches is worth more than the signals.</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">AT</div>
+          <div>
+            <div class="testi-name">Arjun T.</div>
+            <div class="testi-role">College Student</div>
+          </div>
+          <div class="testi-pnl">+₹28.4K<small>per month</small></div>
+        </div>
+      </div>
+
+      <!-- Placeholder testimonial card for future photo -->
+      <div class="testi-card" style="border-style:dashed;opacity:.5;">
+        <div class="img-placeholder" style="height:100%;border-radius:10px;border:none;background:transparent;">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          <span style="font-size:12px;">Add member story</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Free Access · Limited Time</div>
+    <h2 class="cta-headline">STOP WATCHING MONEY<br/>SIT <em>IDLE</em> IN YOUR ACCOUNT</h2>
+    <p class="cta-sub">12,000+ people are already earning extra income with our signals every single day. Join them free.</p>
+    <div>
+      <a class="cta-btn" href="https://t.me/+XfUtefa7nGcxOTFl" target="_blank" rel="noopener">
+        Join Trade With Purab — FREE <span style="font-size:18px;">→</span>
+      </a>
+    </div>
+    <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:24px;">🔒 Free forever · No hidden fees · Leave anytime</div>
+    <div class="cta-trust">
+      <div class="trust-item"><div class="trust-check">✓</div> No Experience Needed</div>
+      <div class="trust-item"><div class="trust-check">✓</div> Works on Any Phone</div>
+      <div class="trust-item"><div class="trust-check">✓</div> Instant Telegram Alerts</div>
+      <div class="trust-item"><div class="trust-check">✓</div> Stop-Loss on Every Trade</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Trade With Purab</div>
+  <p class="footer-disclaimer">
+    ⚠ Disclaimer: Trading involves financial risk. Past accuracy does not guarantee future results. Signals are for educational purposes only. Please consult a SEBI-registered financial advisor before investing.
+  </p>
+  <div class="footer-copy">© 2026 Trade With Purab</div>
+</footer>
+
+<script>
+// Auto-rotate testimonial cards in single row
+(function() {
+  const testiCards = document.querySelectorAll('.testi-card:not([style*="dashed"])');
+  let currentIndex = 0;
+  
+  function rotateTestimonials() {
+    // Remove all classes
+    testiCards.forEach(card => {
+      card.classList.remove('active', 'prev');
+    });
+    
+    // Set previous card
+    const prevIndex = currentIndex === 0 ? testiCards.length - 1 : currentIndex - 1;
+    testiCards[prevIndex].classList.add('prev');
+    
+    // Set active card
+    testiCards[currentIndex].classList.add('active');
+    
+    // Move to next card
+    currentIndex = (currentIndex + 1) % testiCards.length;
+  }
+  
+  // Initialize first card as active
+  if (testiCards.length > 0) {
+    testiCards[0].classList.add('active');
+  }
+  
+  // Rotate every 4 seconds
+  setInterval(rotateTestimonials, 4000);
+})();
+</script>
+
+</body>
+</html>
